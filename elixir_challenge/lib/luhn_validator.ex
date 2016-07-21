@@ -12,6 +12,7 @@ defmodule ElixirChallenge.LuhnValidator do
   # Examples
   iex> ElixirChallenge.LuhnValidator.number_valid?("4408041234567893")
   true
+
   iex> ElixirChallenge.LuhnValidator.number_valid?("4417123456789112")
   false
   """

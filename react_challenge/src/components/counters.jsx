@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 @connect(
   state => state.counters
 )
+
 export default class Counters extends React.Component {
   render () {
     const { message } = this.props

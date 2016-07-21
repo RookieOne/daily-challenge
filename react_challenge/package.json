@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress --colors --hot --inline",
-    "test": "mocha test/setup.js --compilers js:babel-core/register --recursive ./test",
-    "test:watch": "npm run test -- --watch",
-    "karma": "karma start karma.config.js"
+    "test": "karma start karma.config.js"
   },
   "author": "Jonathan Birkholz (@rookieone)",
   "license": "ISC",
@@ -40,6 +38,7 @@
     "react-dom": "^15.2.1",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
+    "wallaby-webpack": "0.0.22",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   }

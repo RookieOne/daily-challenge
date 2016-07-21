@@ -1,7 +1,11 @@
 var path = require('path')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: [
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/dev-server',
+    './src/index.js'
+  ],
   output: {
     path: __dirname,
     filename: 'bundle.js'
@@ -15,7 +19,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel?cacheDirectory!eslint'
+        loader: 'react-hot!babel?cacheDirectory!eslint'
       }
     ]
   },

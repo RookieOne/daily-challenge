@@ -1,2 +1,2 @@
-var testsContext = require.context('test', true, /_test$/)
+var testsContext = require.context('./test', true, /-test$/)
 testsContext.keys().forEach(testsContext)

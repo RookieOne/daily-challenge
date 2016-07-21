@@ -47,4 +47,52 @@ defmodule ElixirChallenge.CreditCardValidator do
     end
   end
 
+  @doc """
+  Returns string from validation data
+
+  # Examples
+
+  iex> ElixirChallenge.CreditCardValidator.output_number_validation({:ok, :visa, "4111111111111111"})
+  "VISA: 4111111111111111       (valid)"
+
+  iex> ElixirChallenge.CreditCardValidator.output_number_validation({:invalid, :visa, "4111111111111"})
+  "VISA: 4111111111111          (invalid)"
+
+  iex> ElixirChallenge.CreditCardValidator.output_number_validation({:ok, :visa, "4012888888881881"})
+  "VISA: 4012888888881881       (valid)"
+
+  iex> ElixirChallenge.CreditCardValidator.output_number_validation({:ok, :discover, "6011111111111117"})
+  "Discover: 6011111111111117   (valid)"
+
+  iex> ElixirChallenge.CreditCardValidator.output_number_validation({:ok, :master_card, "5105105105105100"})
+  "MasterCard: 5105105105105100 (valid)"
+
+  iex> ElixirChallenge.CreditCardValidator.output_number_validation({:invalid, :master_card, "5105105105105106"})
+  "MasterCard: 5105105105105106 (invalid)"
+
+  iex> ElixirChallenge.CreditCardValidator.output_number_validation({:invalid, :unknown, "9111111111111111"})
+  "Unknown: 9111111111111111    (invalid)"
+  """
+  def output_number_validation({status, card_type, number}) do
+    status_string = case status do
+      :ok -> "(valid)"
+      _ -> "(invalid)"
+    end
+    card_type_string = case card_type do
+      :visa -> "VISA"
+      :amex -> "AMEX"
+      :discover -> "Discover"
+      :master_card -> "MasterCard"
+      _ -> "Unknown"
+    end
+    result = card_type_string <> ": " <> number
+    result = result <> _get_spacing(String.length(result))
+    result <> status_string
+  end
+
+  defp _get_spacing(output_length) do
+    Enum.map(0..28-output_length, fn _ -> " " end)
+    |> Enum.join()
+  end
+
 end

@@ -9,7 +9,7 @@ export default class Counters extends React.Component {
     const { message } = this.props
     return (
       <div id="counters">
-        <h1>Hello from React</h1>
+        <h1>Counter App</h1>
         <h2>{message}</h2>
       </div>
     )

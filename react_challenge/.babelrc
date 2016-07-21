@@ -2,6 +2,6 @@
   "presets": ["react", "es2015", "stage-0"],
   "plugins": [
     "transform-decorators-legacy",
-    ["resolver", { "resolveDirs": ["src"] }]
+    ["resolver", { "resolveDirs": ["src", "test"] }]
   ]
 }

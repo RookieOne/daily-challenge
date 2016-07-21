@@ -4,7 +4,9 @@
   "description": "Code challenge: Develop an app using JavaScript and ReactJS that allows you to track multiple counter totals in the browser.",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --hot --inline"
+    "start": "webpack-dev-server --progress --colors --hot --inline",
+    "test": "mocha test/setup.js --compilers js:babel-core/register --recursive ./test",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "Jonathan Birkholz (@rookieone)",
   "license": "ISC",
@@ -17,12 +19,14 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
+    "chai": "^3.5.0",
     "eslint": "^3.1.1",
     "eslint-config-standard": "^5.3.5",
     "eslint-loader": "^1.4.1",
     "eslint-plugin-promise": "^2.0.0",
     "eslint-plugin-react": "^5.2.2",
     "eslint-plugin-standard": "^2.0.0",
+    "mocha": "^2.5.3",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-redux": "^4.4.5",

@@ -1,34 +1,50 @@
+// var wallabyWebpack = require('wallaby-webpack')
+// var webpackConfig = require('./build/config/make-webpack-config')()
+// var babel = require('babel')
+
+// module.exports = function (wallaby) {
+//   var webpackPostprocessor = wallabyWebpack(webpackConfig)
+
+//   // removing babel-loader, we will use babel compiler instead, it's more performant
+//   webpackConfig.module.loaders = webpackConfig.module.loaders.filter(function (l) {
+//     return l.loader !== 'babel-loader'
+//   })
+
+//   // removing devtool (if you don't have more loaders that transform your code)
+//   delete webpackConfig.devtool
+
+//   // if you prefer to use babel loader over babel compiler,
+//   // don't remove it from loaders, assign the webpackConfig.devtool value to:
+//   // 'source-map or 'hidden-source-map' or 'cheap-module-source-map'
+//   // and remove the compilers section below.
+
+//   var wallabyPostprocessor = wallabyWebpack(webpackConfig)
+
+//   return {
+//     files: [
+//       { pattern: 'build/config/phantomjs-shim.js', instrument: false },
+//       { pattern: 'src/**/*.js', load: false }
+//     ],
+//     testFramework: 'mocha',
+//     debug: true,
+//     tests: [
+//       { pattern: 'test/**/*-test.js', load: false }
+//     ],
+
+//     compilers: {
+//       'src/**/*.js*': wallaby.compilers.babel({ babel: babel /* , stage: 0 */ })
+//     },
+//     postprocessor: webpackPostprocessor,
+
+//     bootstrap: function () {
+//       window.__moduleBundler.loadTests()
+//     }
+//   }
+// }
+
 var wallabyWebpack = require('wallaby-webpack')
 var webpackConfig = require('./webpack.karma.config.js')
 var wallabyPostprocessor = wallabyWebpack(webpackConfig)
-// {
-//   entry: './entry.js',
-//   output: {
-//     path: __dirname,
-//     filename: 'bundle.js'
-//   },
-//   resolve: {
-//     alias: {
-//       underscore: 'vendor/underscore.min.js'
-//     },
-//     extensions: ['', '.jsx', '.js', '.json', '.scss'],
-//     modulesDirectories: ['node_modules', __dirname + '/src']
-//   },
-//   module: {
-//     loaders: [
-//             { test: /\.css$/, loader: 'style!css' },
-//       {
-//         test: /\.jsx?$/,
-//         exclude: /(node_modules|bower_components)/,
-//         loader: 'babel?cacheDirectory'
-//       }, {
-//         test: /\.json$/,
-//         loader: 'json'
-//       }
-//     ]
-//   }
-// }
-// )
 
 module.exports = function (wallaby) {
   return {

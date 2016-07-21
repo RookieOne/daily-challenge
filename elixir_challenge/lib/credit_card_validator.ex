@@ -3,6 +3,33 @@ defmodule ElixirChallenge.CreditCardValidator do
   alias ElixirChallenge.LuhnValidator
 
   @doc """
+  Process the credit cards from a file. Assumes each credit card is on a separate line in the file
+
+  # Example
+  4111111111111111
+  4111111111111
+  4012888888881881
+  378282246310005
+  6011111111111117
+  5105105105105100
+  5105 1051 0510 5106
+  9111111111111111
+
+  """
+  def process_file(filename) do
+    File.stream!(filename)
+    |> Stream.map(fn line -> 
+      line 
+      |> String.rstrip
+      |> String.replace(" ", "")
+      |> validate_number
+      |> output_number_validation
+    end)
+    |> Stream.each(fn result -> IO.puts result end)
+    |> Enum.to_list
+  end
+
+  @doc """
   Validates whether a credit card number is valid based on:
 
   1. matching a known credit card type

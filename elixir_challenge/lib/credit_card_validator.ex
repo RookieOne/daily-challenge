@@ -30,6 +30,18 @@ defmodule ElixirChallenge.CreditCardValidator do
   end
 
   @doc """
+  Create a custom sigil to validate credit card number and return tuple
+  
+  Just did this as an exercise in making a custom sigil. I was hoping for ~cc but apparently sigils can only be one letter
+
+  ## Examples
+  iex> import ElixirChallenge.CreditCardValidator
+  iex> ~v/4111111111111111/
+  {:ok, :visa, "4111111111111111"}
+  """
+  def sigil_v(number, []), do: validate_number(number)
+
+  @doc """
   Validates whether a credit card number is valid based on:
 
   1. matching a known credit card type

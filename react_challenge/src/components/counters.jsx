@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
   state => state.counters
 )
 export default class Counters extends React.Component {
-  render() {
+  render () {
     const { message } = this.props
     return (
       <div id="counters">

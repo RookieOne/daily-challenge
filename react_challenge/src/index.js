@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import configureStore from './configure-store'
 
-const store = configureStore({});
+const store = configureStore({})
 
 import Counters from './components/counters'
 

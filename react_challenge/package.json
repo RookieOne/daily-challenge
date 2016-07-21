@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --progress --colors --hot --inline",
     "test": "mocha test/setup.js --compilers js:babel-core/register --recursive ./test",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "karma": "karma start karma.config.js"
   },
   "author": "Jonathan Birkholz (@rookieone)",
   "license": "ISC",
@@ -28,6 +29,11 @@
     "eslint-plugin-react": "^5.2.2",
     "eslint-plugin-standard": "^2.0.0",
     "jsdom": "^9.4.1",
+    "karma": "^1.1.1",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^1.1.1",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "karma-spec-reporter": "0.0.26",
     "mocha": "^2.5.3",
     "react": "^15.2.1",
     "react-addons-test-utils": "^15.2.1",

@@ -1,0 +1,17 @@
+{
+  "name": "react_challenge",
+  "version": "1.0.0",
+  "description": "Code challenge: Develop an app using JavaScript and ReactJS that allows you to track multiple counter totals in the browser.",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --progress --colors --hot --inline"
+  },
+  "author": "Jonathan Birkholz (@rookieone)",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

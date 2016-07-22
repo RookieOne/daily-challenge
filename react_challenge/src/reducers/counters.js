@@ -4,7 +4,12 @@ import _ from 'lodash'
 
 const initialState = {
   counters: [],
+  totalCounts: 0,
   newCounterName: ''
+}
+
+const getTotalCounts = (counters) => {
+  return _.reduce(counters, (sum, counter) => sum + counter.count, 0)
 }
 
 const addCounter = (state) => {
@@ -34,7 +39,8 @@ const incrementCounter = (state, counterName) => {
   ]
   return {
     ...state,
-    counters: counters
+    counters: counters,
+    totalCounts: getTotalCounts(counters)
   }
 }
 
@@ -49,7 +55,8 @@ const decrementCounter = (state, counterName) => {
   ]
   return {
     ...state,
-    counters: counters
+    counters: counters,
+    totalCounts: getTotalCounts(counters)
   }
 }
 

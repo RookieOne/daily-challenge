@@ -29,6 +29,7 @@ export class Counter extends React.Component {
 
 export default class Counters extends React.Component {
   static propTypes = {
+    totalCounts: React.PropTypes.number,
     counters: React.PropTypes.array,
     incrementCounter: React.PropTypes.func,
     decrementCounter: React.PropTypes.func
@@ -48,9 +49,11 @@ export default class Counters extends React.Component {
     />)
   }
   render () {
+    const { totalCounts } = this.props
     return (
       <div id="counters">
         <h1>Counter App</h1>
+        <h3>Total: <span id="totalCounts">{totalCounts}</span></h3>
         <ul className="counters">
           {this.renderCounters()}
         </ul>

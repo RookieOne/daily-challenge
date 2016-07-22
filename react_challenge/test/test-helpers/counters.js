@@ -1,11 +1,22 @@
 import _ from 'lodash'
 
 export function startingCounters (counters) {
-  return { counters: { counters } }
+  return {
+    counters: {
+      counters,
+      totalCounts: _.reduce(counters, (sum, counter) => sum + counter.count, 0)
+    }
+  }
 }
+
 export function getCounterCount (test) {
   const $ = test.renderHTML()
   return $('#counters li').length
+}
+
+export function getDisplayedTotalCount (test) {
+  const $ = test.renderHTML()
+  return $('h3 span').text()
 }
 
 export function getDisplayedCountsFor (test, counterName) {

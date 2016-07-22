@@ -1,5 +1,6 @@
 export const ADD_COUNTER = 'ADD_COUNTER'
 export const CHANGE_NEW_COUNTER_NAME = 'CHANGE_NEW_COUNTER_NAME'
+export const INCREMENT_COUNTER = 'INCREMENT_COUNTER'
 
 export function addCounter (name) {
   return {
@@ -11,6 +12,13 @@ export function addCounter (name) {
 export function changeNewCounterName (name) {
   return {
     type: CHANGE_NEW_COUNTER_NAME,
+    name
+  }
+}
+
+export function incrementCounter (name) {
+  return {
+    type: INCREMENT_COUNTER,
     name
   }
 }

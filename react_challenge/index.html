@@ -1,10 +1,39 @@
 <html>
   <head>
     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Code Challenge</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style>
+      #add-counter form label {
+        margin-right: 10px;
+      }
+      #add-counter .form-group {
+        margin-right: 10px;
+      }
+      ul.counters {
+        list-style-type: none;
+        padding-left: 0px;
+      }
+      ul.counters li {
+        margin-bottom: 10px;
+      }
+      ul.counters li span {
+        display: inline-block;
+        margin-right: 10px;
+      }
+      ul.counters li .btn {
+        margin-right: 10px;
+      }
+      ul.counters li .counter-name::after { 
+        content: ":";
+      }
+    </style>
   </head>
   <body>
-    <div id="app"></div>
+    <div class="container">
+      <div id="app"></div>
+    </div>
     <script type="text/javascript" src="/bundle.js" charset="utf-8"></script>
   </body>
 </html>

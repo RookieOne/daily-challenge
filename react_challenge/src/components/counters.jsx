@@ -5,18 +5,23 @@ import { bindActionCreators } from 'redux'
 import * as counterActionsCreator from 'actions/counter'
 
 export class Counter extends React.Component {
+  static propTypes = {
+    counter: React.PropTypes.object,
+    incrementCount: React.PropTypes.func,
+    decrementCount: React.PropTypes.func
+  }
   render () {
-    const props = this.props
+    const { counter, incrementCount, decrementCount } = this.props
     return (
-      <li id={`counter-id-${props.counter.id}`}>
+      <li id={`counter-id-${counter.id}`}>
         <span className="counter-name">
-          {props.counter.name}
+          {counter.name}
         </span>
         <span className="counter-count">
-          {props.counter.count}
+          {counter.count}
         </span>
-        <button name="increment-btn" onClick={() => { props.incrementCount(props.counter.name) }}>+</button>
-        <button name="decrement-btn" onClick={() => { props.decrementCount(props.counter.name) }}>-</button>
+        <button className="btn btn-default" name="increment-btn" onClick={() => { incrementCount(counter.name) }}>+</button>
+        <button className="btn btn-default" name="decrement-btn" onClick={() => { decrementCount(counter.name) }}>-</button>
       </li>
     )
   }

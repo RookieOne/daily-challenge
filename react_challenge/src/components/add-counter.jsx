@@ -25,10 +25,12 @@ export default class AddCounter extends React.Component {
     const { newCounterName } = this.props
     return (
       <div id="add-counter">
-        <h1>Add Counter</h1>
-        <form onSubmit={this.addCounter}>
-          <input name='new-counter-name' onChange={this.changeNewCounterName} value={newCounterName} />
-          <button name='add-counter-btn' onClick={this.addCounter}>
+        <form className="form-inline" onSubmit={this.addCounter}>
+          <div className="form-group">
+            <label htmlFor="new-counter-name">New Counter</label>
+            <input className="form-control" required name='new-counter-name' onChange={this.changeNewCounterName} value={newCounterName} />
+          </div>
+          <button type="submit" className="btn btn-default" name='add-counter-btn' onClick={this.addCounter}>
             Add Counter
           </button>
         </form>

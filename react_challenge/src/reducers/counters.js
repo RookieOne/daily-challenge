@@ -1,4 +1,4 @@
-import { ADD_COUNTER, CHANGE_NEW_COUNTER_NAME, INCREMENT_COUNTER } from 'actions/counter'
+import { ADD_COUNTER, CHANGE_NEW_COUNTER_NAME, INCREMENT_COUNTER, DECREMENT_COUNTER } from 'actions/counter'
 import uuid from 'node-uuid'
 import _ from 'lodash'
 
@@ -38,6 +38,21 @@ const incrementCounter = (state, counterName) => {
   }
 }
 
+const decrementCounter = (state, counterName) => {
+  let i = _.findIndex(state.counters, { name: counterName })
+  const counter = state.counters[i]
+  let newCounter = {...counter, count: counter.count - 1}
+  let counters = [
+    ...state.counters.slice(0, i),
+    newCounter,
+    ...state.counters.slice(i + 1, state.counters.length)
+  ]
+  return {
+    ...state,
+    counters: counters
+  }
+}
+
 export function counters (state = initialState, action) {
   switch (action.type) {
     case ADD_COUNTER:
@@ -46,6 +61,8 @@ export function counters (state = initialState, action) {
       return changeNewCounterName(state, action.name)
     case INCREMENT_COUNTER:
       return incrementCounter(state, action.name)
+    case DECREMENT_COUNTER:
+      return decrementCounter(state, action.name)
     default:
       return state
   }

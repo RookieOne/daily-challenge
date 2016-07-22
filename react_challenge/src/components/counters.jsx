@@ -16,6 +16,7 @@ export class Counter extends React.Component {
           {props.counter.count}
         </span>
         <button name="increment-btn" onClick={() => { props.incrementCount(props.counter.name) }}>+</button>
+        <button name="decrement-btn" onClick={() => { props.decrementCount(props.counter.name) }}>-</button>
       </li>
     )
   }
@@ -29,16 +30,21 @@ export class Counter extends React.Component {
 export default class Counters extends React.Component {
   static propTypes = {
     counters: React.PropTypes.array,
-    incrementCounter: React.PropTypes.func
+    incrementCounter: React.PropTypes.func,
+    decrementCounter: React.PropTypes.func
   }
   incrementCount = (counterName) => {
     this.props.incrementCounter(counterName)
+  }
+  decrementCount = (counterName) => {
+    this.props.decrementCounter(counterName)
   }
   renderCounters () {
     const { counters } = this.props
     return counters.map((c) => <Counter key={c.id}
       counter={c}
       incrementCount={this.incrementCount}
+      decrementCount={this.decrementCount}
     />)
   }
   render () {

@@ -75,4 +75,30 @@ describe('<Counters />', function () {
       assert.equal(5, getStoreCountsFor(this, 'Dogs'))
     })
   })
+
+  describe('decrementing counter', () => {
+    beforeEach(() => {
+      const state = startingCounters([
+        {id: 1, name: 'Cats', count: 2},
+        {id: 2, name: 'Dogs', count: 4}
+      ])
+      this.render(<Counters />, state)
+
+      const components = this.findComponents(Counter)
+      const dog = _.findWhere(components, { props: { counter: { name: 'Dogs' } } })
+      this.clickButton(dog, 'decrement-btn')
+    })
+    it('should keep same number of counters', () => {
+      assert.equal(2, getCounterCount(this))
+    })
+    it('should increment count for Dogs counter', () => {
+      assert.equal(3, getDisplayedCountsFor(this, 'Dogs'))
+    })
+    it('should keep count for Cats counter', () => {
+      assert.equal(2, getDisplayedCountsFor(this, 'Cats'))
+    })
+    it('should update counters in state', () => {
+      assert.equal(3, getStoreCountsFor(this, 'Dogs'))
+    })
+  })
 }.bind(new ReactTestHelper()))

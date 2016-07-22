@@ -8,11 +8,11 @@ const initialState = {
   newCounterName: ''
 }
 
-const getTotalCounts = (counters) => {
+export const getTotalCounts = (counters) => {
   return _.reduce(counters, (sum, counter) => sum + counter.count, 0)
 }
 
-const addCounter = (state) => {
+export const addCounter = (state) => {
   const counters = [...state.counters, { id: uuid.v4(), name: state.newCounterName, count: 0 }]
   return {
     ...state,
@@ -21,14 +21,14 @@ const addCounter = (state) => {
   }
 }
 
-const changeNewCounterName = (state, newCounterName) => {
+export const changeNewCounterName = (state, newCounterName) => {
   return {
     ...state,
     newCounterName: newCounterName
   }
 }
 
-const incrementCounter = (state, counterName) => {
+export const incrementCounter = (state, counterName) => {
   let i = _.findIndex(state.counters, { name: counterName })
   const counter = state.counters[i]
   let newCounter = {...counter, count: counter.count + 1}
@@ -44,7 +44,7 @@ const incrementCounter = (state, counterName) => {
   }
 }
 
-const decrementCounter = (state, counterName) => {
+export const decrementCounter = (state, counterName) => {
   let i = _.findIndex(state.counters, { name: counterName })
   const counter = state.counters[i]
   let newCounter = {...counter, count: counter.count - 1}

@@ -17,7 +17,8 @@ export default class AddCounter extends React.Component {
   changeNewCounterName = (evt) => {
     this.props.changeNewCounterName(evt.target.value)
   }
-  addCounter = () => {
+  addCounter = (evt) => {
+    evt.preventDefault()
     this.props.addCounter('foo')
   }
   render () {
@@ -25,10 +26,12 @@ export default class AddCounter extends React.Component {
     return (
       <div id="add-counter">
         <h1>Add Counter</h1>
-        <input name='new-counter-name' onChange={this.changeNewCounterName} value={newCounterName} />
-        <button name='add-counter-btn' onClick={this.addCounter}>
-          Add Counter
-        </button>
+        <form onSubmit={this.addCounter}>
+          <input name='new-counter-name' onChange={this.changeNewCounterName} value={newCounterName} />
+          <button name='add-counter-btn' onClick={this.addCounter}>
+            Add Counter
+          </button>
+        </form>
       </div>
     )
   }

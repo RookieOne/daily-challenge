@@ -26,7 +26,7 @@ export default class AddCounter extends React.Component {
       <div id="add-counter">
         <h1>Add Counter</h1>
         <input name='new-counter-name' onChange={this.changeNewCounterName} value={newCounterName} />
-        <button id='add-counter-btn' onClick={this.addCounter}>
+        <button name='add-counter-btn' onClick={this.addCounter}>
           Add Counter
         </button>
       </div>

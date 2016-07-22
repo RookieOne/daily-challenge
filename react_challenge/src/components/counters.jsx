@@ -4,18 +4,21 @@ import AddCounter from 'components/add-counter'
 import { bindActionCreators } from 'redux'
 import * as counterActionsCreator from 'actions/counter'
 
-const Counter = (props) => {
-  return (
-    <li id={`counter-id-${props.counter.id}`}>
-      <span className="counter-name">
-        {props.counter.name}
-      </span>
-      <span className="counter-count">
-        {props.counter.count}
-      </span>
-      <button name="increment-btn" onClick={() => { props.incrementCount(props.counter.name) }}>+</button>
-    </li>
-  )
+export class Counter extends React.Component {
+  render () {
+    const props = this.props
+    return (
+      <li id={`counter-id-${props.counter.id}`}>
+        <span className="counter-name">
+          {props.counter.name}
+        </span>
+        <span className="counter-count">
+          {props.counter.count}
+        </span>
+        <button name="increment-btn" onClick={() => { props.incrementCount(props.counter.name) }}>+</button>
+      </li>
+    )
+  }
 }
 
 @connect(
@@ -29,7 +32,6 @@ export default class Counters extends React.Component {
     incrementCounter: React.PropTypes.func
   }
   incrementCount = (counterName) => {
-    console.log('inc', counterName)
     this.props.incrementCounter(counterName)
   }
   renderCounters () {

@@ -31,15 +31,22 @@ export class ReactTestHelper {
     }
     return components[0]
   }
+  findComponents (ComponentType) {
+    const components = TestUtils.scryRenderedComponentsWithType(this.renderedComponent, ComponentType)
+    if (components.length === 0) {
+      throw new Error(`Could not find component - ${ComponentType}`)
+    }
+    return components
+  }
   setValue (component = this.renderedComponent, name, value) {
     var inputs = TestUtils.scryRenderedDOMComponentsWithTag(component, 'input')
     var input = _.find(inputs, { name })
     input.value = value
     TestUtils.Simulate.change(input)
   }
-  clickButton (component = this.renderedComponent, id) {
+  clickButton (component = this.renderedComponent, name) {
     var buttons = TestUtils.scryRenderedDOMComponentsWithTag(component, 'button')
-    var button = _.find(buttons, { id })
+    var button = _.find(buttons, { name })
     TestUtils.Simulate.click(button)
   }
   getState () {

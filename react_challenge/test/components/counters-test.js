@@ -1,6 +1,6 @@
 import { assert } from 'chai'
 import React from 'react'
-import Counters from 'components/counters'
+import Counters, { Counter } from 'components/counters'
 import AddCounter from 'components/add-counter'
 import { ReactTestHelper } from 'test-helpers/react'
 import { getDisplayedCounts } from 'test-helpers/counters'
@@ -65,6 +65,41 @@ describe('<Counters />', function () {
       const greyhoundCounter = _.find(state.counters.counters, { name: 'Greyhounds' })
       assert(greyhoundCounter !== undefined)
       assert.equal(0, greyhoundCounter.count)
+    })
+  })
+
+  describe('incrementing counter', () => {
+    let counters = []
+    beforeEach(() => {
+      const state = {
+        counters: {
+          counters: [
+            {id: 1, name: 'Cats', count: 2},
+            {id: 2, name: 'Dogs', count: 4}
+          ]
+        }
+      }
+      this.render(<Counters />, state)
+      
+      const components = this.findComponents(Counter)
+      const dog = _.findWhere(components, { props: { counter: { name: 'Dogs' } } })
+      this.clickButton(dog, 'increment-btn')
+      
+      const $ = this.renderHTML()
+      counters = $('#counters li')
+    })
+    it ('should keep same number of counters', () => {
+      assert.equal(2, counters.length)
+    })
+    it ('should show count for Greyhounds counter', () => {
+      const displayedCounts = getDisplayedCounts(counters)
+      assert.equal(5, displayedCounts['Dogs'])
+    })
+    it ('should update counters in state', () => {
+      const state = this.getState()
+      const counter = _.find(state.counters.counters, { name: 'Dogs' })
+      assert(counter !== undefined)
+      assert.equal(5, counter.count)
     })
   })
 }.bind(new ReactTestHelper()))
